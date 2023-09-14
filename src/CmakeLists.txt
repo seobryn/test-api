@@ -1,6 +1,21 @@
-add_executable(WebApi Main.cpp)
+set(SRC_FILES 
+    Main.cpp
+    Routes/Routes.cpp
+)
+set(HEADER_DIR 
+    "Include/"
+    "Include/Routes"
+)
 
-target_include_directories(WebApi PRIVATE ${CROW_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(WebApi PRIVATE ${Boost_LIBRARIES})
 
-install(TARGETS WebApi DESTINATION bin)
+include_directories(${HEADER_DIR})
+
+add_executable(${EXECUTABLE_NAME} ${SRC_FILES})
+target_include_directories(${EXECUTABLE_NAME} 
+    PRIVATE 
+    ${CROW_INCLUDE_DIR}
+    ${Boost_INCLUDE_DIRS}
+)
+target_link_libraries(${EXECUTABLE_NAME} PRIVATE ${Boost_LIBRARIES})
+
+install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)

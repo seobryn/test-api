@@ -1,2 +1,2 @@
 cd ../release/bin/
-./WebApi
+./Api

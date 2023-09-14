@@ -1,16 +1,16 @@
-#define CROW_JSON_USE_MAP
-
+#include "Routes.h"
 #include "crow.h"
 
 int main()
 {
     crow::SimpleApp app;
 
-    CROW_ROUTE(app, "/")
-    ([]() {
-        crow::json::wvalue res({{"message", "Hello World!"}});
+    CROW_ROUTE(app, "/").methods("GET"_method)([]() {
+        crow::json::wvalue res({{"status", "Active"}});
         return res;
     });
+
+    CreateApiRoutes(app);
 
     app.port(8081).multithreaded().run();
 }
