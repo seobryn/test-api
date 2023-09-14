@@ -1,0 +1,6 @@
+add_executable(WebApi Main.cpp)
+
+target_include_directories(WebApi PRIVATE ${CROW_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+target_link_libraries(WebApi PRIVATE ${Boost_LIBRARIES})
+
+install(TARGETS WebApi DESTINATION bin)
